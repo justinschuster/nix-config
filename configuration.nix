@@ -104,11 +104,27 @@
     };
   };
 
+  programs = {
+    zsh = {
+      enable = true;
+      ohMyZsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [
+	  #"sudo"
+	  #"terraform" 
+	  #"vi-mode"
+	];
+      };
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.justin = {
     isNormalUser = true;
     description = "Justin";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [
     #  thunderbird
       alacritty
