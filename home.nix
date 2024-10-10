@@ -8,11 +8,11 @@
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
   # link all files in `./scripts` to `~/.config/i3/scripts`
-  # home.file.".config/i3/scripts" = {
-  #   source = ./scripts;
-  #   recursive = true;   # link recursively
-  #   executable = true;  # make all files executable
-  # };
+  home.file.".config/i3/scripts" = {
+    source = ./scripts;
+    recursive = true;   # link recursively
+    executable = true;  # make all files executable
+  };
 
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
@@ -73,6 +73,15 @@
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
     };
+  };
+
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    terminal = "tmux-256color";
+    historyLimit = 100000;
+    plugins = with pkgs; [ 
+      ];  
   };
 
   # This value determines the home Manager release that your

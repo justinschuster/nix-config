@@ -98,8 +98,8 @@
       enable = true;
       extraPackages = with pkgs; [
 	rofi
-        i3status # gives you the default i3 status bar
         i3lock #default i3 screen locker
+	i3blocks
      ];
     };
   };
@@ -137,11 +137,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    acpi
     curl
     gcc
     git
     gnumake
     (neovim.overrideAttrs (old: { version = "0.10.2"; }))
+    nerdfonts
     vim
     wget
     xclip
