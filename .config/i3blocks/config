@@ -1,0 +1,8 @@
+[battery]
+command=acpi -b | awk '{print $4}' | sed 's/,//'
+interval=60
+label=BAT
+
+[time]
+command=date +%T
+interval=5
