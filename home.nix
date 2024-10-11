@@ -1,30 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./home/i3
+  ];
+
   home.username = "justin";
   home.homeDirectory = "/home/justin";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
-
-  # link all files in `./scripts` to `~/.config/i3/scripts`
-  home.file.".config/i3/scripts" = {
-    source = ./scripts;
-    recursive = true;   # link recursively
-    executable = true;  # make all files executable
-  };
-
-  # config files in nixos directory
-  xdg.configFile = {
-    "i3/config".source = ./config/i3/config;
-    "i3blocks/config".source = ./config/i3blocks/config;
-  };
-
-  # set cursor size and dpi for 4k monitor
-  xresources.properties = {
-    "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
-  };
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
