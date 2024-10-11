@@ -18,7 +18,8 @@
       extraPackages = with pkgs; [
 	rofi
         i3lock #default i3 screen locker
-	i3blocks
+        #i3blocks
+        i3status
      ];
     };
 

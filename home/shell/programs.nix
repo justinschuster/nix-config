@@ -9,13 +9,7 @@
       scrolling.history = 10000;
       selection.save_to_clipboard = true;
 
-      window.dynamic_padding = true;
-      window.padding = {
-        x = 5;
-        y = 5;
-      };
-
-      font = { 
+      font = {
         normal = {
           family = "FiraCode Nerd Font Mono";
           style = "Regular";
@@ -27,10 +21,15 @@
         italic = {
           family = "FiraCode Nerd Font Mono";
           style = "Italic";
-        }; 
-        size = 16;  
-      };    
+        };
+        size = 15;
+      };
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.git = {
