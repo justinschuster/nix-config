@@ -14,6 +14,12 @@
     executable = true;  # make all files executable
   };
 
+  # config files in nixos directory
+  xdg.configFile = {
+    "i3/config".source = ./config/i3/config;
+    "i3blocks/config".source = ./config/i3blocks/config;
+  };
+
   # set cursor size and dpi for 4k monitor
   xresources.properties = {
     "Xcursor.size" = 16;
@@ -84,6 +90,13 @@
     historyLimit = 100000;
     plugins = with pkgs; [ 
       ];  
+  };
+
+  programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-unwrapped;
+    # trying to move all config files to nix
+    #extraConfig = builtins.readFile /etc/nixos/config/nvim/init.lua;
   };
 
   # This value determines the home Manager release that your

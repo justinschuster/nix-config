@@ -142,7 +142,7 @@
     gcc
     git
     gnumake
-    (neovim.overrideAttrs (old: { version = "0.10.2"; }))
+    #(neovim.overrideAttrs (old: { version = "0.10.2"; }))
     nerdfonts
     vim
     wget
