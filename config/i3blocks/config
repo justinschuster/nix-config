@@ -4,5 +4,5 @@ interval=60
 label=BAT
 
 [time]
-command=date +%T
+command=date +%r
 interval=5
