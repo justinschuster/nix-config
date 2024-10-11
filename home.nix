@@ -3,6 +3,7 @@
 {
   imports = [
     ./home/i3
+    ./home/rofi
   ];
 
   home.username = "justin";
