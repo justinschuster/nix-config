@@ -88,8 +88,12 @@
     shell = "${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
     historyLimit = 100000;
+    keyMode = "vi";
+    mouse = true;
+    clock24 = false;
+    shortcut = "a";
     plugins = with pkgs; [ 
-      ];  
+    ]; 
   };
 
   programs.neovim = {
