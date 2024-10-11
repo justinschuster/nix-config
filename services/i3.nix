@@ -8,7 +8,7 @@
     desktopManager = {
       xterm.enable = false;
     };
-   
+
     displayManager = {
         defaultSession = "none+i3";
     };
@@ -16,9 +16,8 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-	rofi
-        i3lock #default i3 screen locker
-        #i3blocks
+        rofi
+        i3lock #default i3 screen locker 
         i3status
      ];
     };
