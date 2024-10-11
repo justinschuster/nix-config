@@ -1,6 +1,6 @@
-{ pkgs, ... } {
-  programs.i3staus = {
+{ pkgs, ... }: {
+  programs.i3status = {
     enable = true;
     enableDefault = true;
-  }
+  };
 }

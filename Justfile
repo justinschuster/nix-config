@@ -12,3 +12,6 @@ clean:
 
 dell:
   sudo nixos-rebuild switch --flake .#dell-laptop
+
+clean-dotfiles:
+  rm ~/.config/i3/config && rm ~/.config/i3status/config
