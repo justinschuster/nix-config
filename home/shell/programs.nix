@@ -4,11 +4,32 @@
     # custom settings
     settings = {
       env.TERM = "xterm-256color";
-      font = {
-        size = 16;
-      };
+
       scrolling.multiplier = 5;
+      scrolling.history = 10000;
       selection.save_to_clipboard = true;
+
+      window.dynamic_padding = true;
+      window.padding = {
+        x = 5;
+        y = 5;
+      };
+
+      font = { 
+        normal = {
+          family = "FiraCode Nerd Font Mono";
+          style = "Regular";
+        };
+        bold = {
+          family = "FiraCode Nerd Font Mono";
+          style = "Bold";
+        };
+        italic = {
+          family = "FiraCode Nerd Font Mono";
+          style = "Italic";
+        }; 
+        size = 16;  
+      };    
     };
   };
 
