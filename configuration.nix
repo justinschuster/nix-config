@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./services/i3.nix
     ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -51,12 +52,6 @@
   #services.xserver.displayManager.lightdm.enable = true;
   #services.xserver.desktopManager.xfce.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -78,31 +73,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw  
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-   
-    displayManager = {
-        defaultSession = "none+i3";
-	#sessionCommands = ''
-	#${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1 --mode 1920x1080
-	#'';
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-	rofi
-        i3lock #default i3 screen locker
-	i3blocks
-     ];
-    };
-  };
 
   programs = {
     zsh = {
