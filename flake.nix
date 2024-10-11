@@ -14,7 +14,7 @@
     nixosConfigurations = {
       dell-laptop = let
         username = "justin";
-        specialArgs = = { inherit username };
+        specialArgs = { inherit username; };
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
@@ -28,7 +28,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               
-              home-manager.specialArgs = input // specialArgs;
+              home-manager.extraSpecialArgs = inputs // specialArgs;
               home-manager.users.${username} = import ./users/${username}/home.nix;       
             }
           ];
