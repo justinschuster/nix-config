@@ -33,7 +33,7 @@
     mouse = true;
     clock24 = false;
     shortcut = "a";
-    plugins = with pkgs; [ 
+    plugins = with pkgs; [  
     ]; 
   };
 
