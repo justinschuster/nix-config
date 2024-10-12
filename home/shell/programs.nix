@@ -4,7 +4,7 @@
     # custom settings
     settings = {
       env.TERM = "xterm-256color";
-
+      shell.program = "/etc/profiles/per-user/justin/bin/zsh";
       scrolling.multiplier = 5;
       scrolling.history = 10000;
       selection.save_to_clipboard = true;
