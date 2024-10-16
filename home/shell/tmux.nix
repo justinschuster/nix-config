@@ -7,19 +7,11 @@
     keyMode = "vi";
     mouse = true;
     shortcut = "a";
+    sensibleOnTop = true;
     plugins = with pkgs; [
-      sensible;
     ];
     extraConfig = 
       ''
-      bind | split-window -h
-      bind - split-window -v
-      unbind '"'
-      unbind %
-
-      # faster pane switching
-      bind C-n next-window
-      bind C-p previous-window
-      ''
+      '';
   };
 }

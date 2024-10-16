@@ -44,19 +44,6 @@
     #extraConfig = builtins.readFile /etc/nixos/config/nvim/init.lua;
   };
 
-  programs.tmux = {
-    enable = true;
-    shell = "${pkgs.zsh}/bin/zsh";
-    terminal = "tmux-256color";
-    historyLimit = 100000;
-    keyMode = "vi";
-    mouse = true;
-    clock24 = false;
-    shortcut = "a";
-    plugins = with pkgs; [  
-    ]; 
-  };
-
   programs.zsh = {
     enable = true;
     oh-my-zsh ={
