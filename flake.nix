@@ -8,23 +8,14 @@
   #
   ##################################################################################################################
 
-  # the nixConfig here only affects the flake itself, not the system configuration!
-  nixConfig = {
-    substituters = [
-      # Query the mirror of USTC first, and then the official cache.
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-    ];
-  };
-
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+
     darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -37,9 +28,9 @@
     self,
     nixpkgs,
     darwin,
+    home-manager,
     ...
   }: let
-    # TODO replace with your own username, system and hostname
     username = "justin";
     system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
     hostname = "Bacchus";
@@ -56,8 +47,19 @@
         ./modules/nix-core.nix
         ./modules/system.nix
         ./modules/apps.nix
-
         ./modules/host-users.nix
+
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.extraSpecialArgs = {
+              inherit username;
+          };
+
+          home-manager.users.${username} = import ./home.nix;
+        }
       ];
     };
     # nix code formatter

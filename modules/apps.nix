@@ -34,9 +34,7 @@
       # cleanup = "zap";
     };
 
-    taps = [
-      "homebrew/services"
-    ];
+    taps = [];
 
     # `brew install`
     # TODO Feel free to add your favorite apps here.
@@ -47,8 +45,7 @@
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
-      "firefox"
-      # "google-chrome"
+      # "firefox"
     ];
   };
 }

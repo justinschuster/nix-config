@@ -37,11 +37,5 @@
       # "error: cannot link '/nix/store/.tmp-link-xxxxx-xxxxx' to '/nix/store/.links/xxxx': File exists"
       auto-optimise-store = false;
     };
-
-    # do garbage collection weekly to keep disk usage low
-    gc = {
-      automatic = lib.mkDefault true;
-      options = lib.mkDefault "--delete-older-than 7d";
-    };
   };
 }

@@ -1,0 +1,17 @@
+# NixOS build / evaluation outputs
+result
+result-*
+
+# Direnv & Nix shell environments
+.direnv/
+.envrc
+
+# Python cache (if using python scripts or certain plugins)
+__pycache__/
+
+# Editor / System clutter
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
