@@ -46,7 +46,7 @@
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
-      # "aria2"  # download tool
+      "tree-sitter-cli"
     ];
 
     # `brew install --cask`
