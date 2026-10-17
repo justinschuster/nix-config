@@ -22,4 +22,11 @@
 
       package = unstable.neovim-unwrapped;
   };
+
+  programs.zsh = {
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
+    };
+  };
 }
