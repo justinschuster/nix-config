@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, unstable, ... }:
 
 {
   home.username = username;
@@ -13,5 +13,13 @@
     ripgrep
   ];
 
-  programs.neovim.enable = true;
+  programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+
+      viAlias = true;
+      vimAlias = true;
+
+      package = unstable.neovim-unwrapped;
+  };
 }
