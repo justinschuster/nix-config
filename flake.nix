@@ -66,18 +66,13 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
-          home-manager.extraSpecialArgs = {
-              inherit username;
-              unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-          };
-
-          home-manager.users.${username} = import ./home.nix;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.users.${username} = import ./home;
         }
       ];
     };
 
     # nix code formatter
-    formatter.${system} = nixpkgs-darwin.legacyPackages.${system}.alejandra;
+    formatter.${system} = nixpkgs-darwin.legacyPackages.${system}.nixfmt;
   };
 }

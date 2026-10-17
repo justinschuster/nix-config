@@ -11,6 +11,9 @@
   #
   ##########################################################################
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Install packages from nix's official package repository.
   #
   # The packages installed here are available to all users, and are reproducible across machines, and are rollbackable.
@@ -20,13 +23,6 @@
   environment.systemPackages = with pkgs; [
     git
   ];
-   
-  # Manage Homebrew itself and adopt your existing installation.
-  nix-homebrew = {
-    enable = true;
-    user = username;
-    autoMigrate = true;
-  };
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
@@ -46,13 +42,6 @@
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
-      "tmux"
-
-      # neovim deps
-      "fzf"
-      "ripgrep"
-      "tree-sitter-cli"
-
     ];
 
     # `brew install --cask`
