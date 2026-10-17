@@ -6,7 +6,7 @@
 
   # Compatibility baseline for your initial Home Manager setup.
   # Keep this value when upgrading Home Manager later.
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   home.packages = with pkgs; [
     fd
