@@ -1,6 +1,9 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
     neovim
+    nil
+    nixfmt
+    go
     fd
     fzf
     jq
@@ -26,6 +29,5 @@
 
   xdg.enable = true;
   xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/src/config.nvim";
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/src/config.nvim";
 }
