@@ -1,4 +1,4 @@
-{ pkgs, ...}: {
+{ pkgs, username, ...}: {
 
   ##########################################################################
   #
@@ -20,6 +20,13 @@
   environment.systemPackages = with pkgs; [
     git
   ];
+   
+  # Manage Homebrew itself and adopt your existing installation.
+  nix-homebrew = {
+    enable = true;
+    user = username;
+    autoMigrate = true;
+  };
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #

@@ -13,6 +13,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
@@ -52,7 +53,10 @@
       modules = [
         ./modules/nix-core.nix
         ./modules/system.nix
+
+        inputs.nix-homebrew.darwinModules.nix-homebrew
         ./modules/apps.nix
+
         ./modules/host-users.nix
 
         home-manager.darwinModules.home-manager
