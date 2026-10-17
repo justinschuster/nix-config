@@ -1,25 +1,31 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   home.packages = with pkgs; [
-    # utils
+    neovim
     fd
     fzf
     jq
     ripgrep
   ];
 
-  programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
+  programs.zsh = {
+    shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
     };
 
-    zsh = {
-      oh-my-zsh = {
-        enable = true;
-	theme = "robbyrussell";
-      };
+    oh-my-zsh = {
+      enable = true;
+      theme = "robbyrussell";
     };
   };
+
+  xdg.enable = true;
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/src/config.nvim";
 }

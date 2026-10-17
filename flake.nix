@@ -27,6 +27,11 @@
       # to avoid problems caused by different versions of nixpkgs dependencies.
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+
+    nvim-config = {
+      url = "github:justinschuster/config.nvim";
+      flake = false;
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
