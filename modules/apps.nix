@@ -46,7 +46,13 @@
     # `brew install`
     # TODO Feel free to add your favorite apps here.
     brews = [
+      "tmux"
+
+      # neovim deps
+      "fzf"
+      "ripgrep"
       "tree-sitter-cli"
+
     ];
 
     # `brew install --cask`
