@@ -1,15 +1,4 @@
-{ pkgs, username, ...}: {
-
-  ##########################################################################
-  #
-  #  Install all apps and packages here.
-  #
-  #  NOTE: Your can find all available options in:
-  #    https://daiderd.com/nix-darwin/manual/index.html
-  #
-  # TODO Fell free to modify this file to fit your needs.
-  #
-  ##########################################################################
+{ pkgs, username, ... }: {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -25,30 +14,33 @@
   ];
   environment.variables.EDITOR = "nvim";
 
-  # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
-  #
-  # The apps installed by homebrew are not managed by nix, and not reproducible!
-  # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
+  nix-homebrew = {
+    enable = true;
+    user = username;
+    autoMigrate = true;
+  };
+
   homebrew = {
     enable = true;
 
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = true;
+      autoUpgrade = true;
       # 'zap': uninstalls all formulae(and related files) not listed here.
-      # cleanup = "zap";
+      cleanup = "zap";
     };
 
-    taps = [];
+    taps = [ ];
 
     # `brew install`
-    # TODO Feel free to add your favorite apps here.
     brews = [
+      "tree-sitter"
     ];
 
     # `brew install --cask`
-    # TODO Feel free to add your favorite apps here.
     casks = [
       # "firefox"
+      "claude-code"
     ];
   };
 }
