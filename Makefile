@@ -5,6 +5,14 @@ SHELL := /bin/bash
 HOST ?= Bacchus
 NIX_FLAGS := --extra-experimental-features 'nix-command flakes'
 
+ifeq ($(shell uname -s),Darwin)
+  FLAKE_ATTR := darwinConfigurations.$(HOST).system
+  SWITCH := sudo -E ./result/sw/bin/darwin-rebuild switch --flake .\#$(HOST)
+else
+  FLAKE_ATTR := nixosConfigurations.$(HOST).config.system.build.toplevel
+  SWITCH := sudo nixos-rebuild switch --flake .\#$(HOST)
+endif
+
 .PHONY: help install-deps build deploy
 
 help:
@@ -18,11 +26,8 @@ install-deps:
 
 build:
 	@printf 'Building configuration for %s...\n' "$(HOST)"
-	nix build ".#darwinConfigurations.$(HOST).system" $(NIX_FLAGS)
+	nix build ".#$(FLAKE_ATTR)" $(NIX_FLAGS)
 
-deploy:
+deploy: build
 	@printf 'Activating configuration for %s...\n' "$(HOST)"
-	nix build .#darwinConfigurations.Bacchus.system \
-	   --extra-experimental-features 'nix-command flakes'
-	sudo -E ./result/sw/bin/darwin-rebuild switch --flake .#Bacchus
-
+	$(SWITCH)

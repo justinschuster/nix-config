@@ -11,11 +11,6 @@
     tmux
   ];
 
-  programs.ghostty = {
-    enable = true;
-    package = pkgs.ghostty-bin;
-  };
-
   home.sessionVariables = {
     EDITOR = "nvim";
     VISUAL = "nvim";

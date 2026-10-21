@@ -34,7 +34,9 @@ install_neovim_config() {
   git clone "$NEOVIM_CONFIG_REPO_URL" "$NEOVIM_CONFIG_PATH"
 }
 
-install_homebrew
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  install_homebrew
+fi
 install_neovim_config
 
 echo "Setup complete. Run make deploy from your nix-config repository."
