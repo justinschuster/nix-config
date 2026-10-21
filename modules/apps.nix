@@ -39,8 +39,8 @@
 
     # `brew install --cask`
     casks = [
-      # "firefox"
       "claude-code"
+      "firefox"
     ];
   };
 }
