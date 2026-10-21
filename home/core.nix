@@ -1,13 +1,14 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
+    fd
+    fzf
+    go
+    jq
     neovim
     nil
     nixfmt
-    go
-    fd
-    fzf
-    jq
     ripgrep
+    tmux
   ];
 
   programs.ghostty = {
